@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls.Basic
-
+import ImageEffecter
 
 ApplicationWindow {
     id: window
@@ -25,7 +25,7 @@ ApplicationWindow {
 
         MenuBar{
             Layout.columnSpan: 4
-            Layout.row: 1
+            Layout.row: 0
             Menu{
                 title: qsTr("&File")
                 Action {
@@ -37,10 +37,26 @@ ApplicationWindow {
             }
         }
 
-        ImageContainer{
+        ComputeItem {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            Layout.leftMargin: 10
+            Layout.topMargin: 10
+            Layout.bottomMargin: 10
+            Layout.columnSpan: 3
+            Layout.row: 1
 
-            id: imgContainer
+            source: "E:/uni/qt/imageEff/ImageEffecter/assets/test2.jpg"
+            alphaBlending: true
+
+            // mirrorVertically: true   // flip if the image appears upside down
         }
+        // ImageContainer{
+
+        //     id: imgContainer
+
+
+        // }
 
 
         AddEffectBox{

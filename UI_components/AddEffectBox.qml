@@ -10,8 +10,8 @@ Item{
     Layout.topMargin: 10
     Layout.bottomMargin: 10
     Layout.maximumWidth: 200
-    Layout.row: 2
-    Layout.column: 4
+    Layout.row: 1
+    Layout.column: 3
 
     Rectangle{
         anchors.fill: parent
@@ -91,7 +91,10 @@ Item{
 
                     Repeater {
                         model: 20
-                        EffectInstance{}
+                        EffectInstance{
+                            idx: 0
+                            effectName: "Gray scale"
+                        }
                     }
                 }
             }

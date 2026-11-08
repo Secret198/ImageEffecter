@@ -10,7 +10,7 @@ Item{
     Layout.topMargin: 10
     Layout.bottomMargin: 10
     Layout.columnSpan: 3
-    Layout.row: 2
+    Layout.row: 1
 
     Rectangle{
         anchors.fill: parent
@@ -25,5 +25,17 @@ Item{
                 verticalCenter: parent.verticalCenter
             }
         }
+
+        // Image{
+        //     anchors{
+        //         horizontalCenter: parent.horizontalCenter
+        //         verticalCenter: parent.verticalCenter
+        //     }
+        //     anchors.fill: parent
+
+        //     fillMode: Image.PreserveAspectFit
+
+        //     source: "../assets/test2.jpg"
+        // }
     }
 }

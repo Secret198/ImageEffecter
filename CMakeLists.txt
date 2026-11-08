@@ -4,7 +4,7 @@ project(ImageEffecter VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Quick)
+find_package(Qt6 REQUIRED COMPONENTS Quick GuiPrivate ShaderTools)
 
 qt_standard_project_setup(REQUIRES 6.10)
 
@@ -25,10 +25,33 @@ qt_add_qml_module(appImageEffecter
         QML_FILES UI_components/ImageContainer.qml
         QML_FILES UI_components/EffectInstance.qml
 
+    SOURCES
+        computeitem.h
+        computeitem.cpp
+
+
     RESOURCES
         assets/icons/cross_icon.svg
         assets/icons/plus_icon.svg
+        assets/test.jpg
+        assets/test2.jpg
+
+        SOURCES computerenderer.h computerenderer.cpp
+        SOURCES computeitem.h computeitem.cpp
+        SOURCES effect.h effect.cpp
+        SOURCES effectcontainer.h effectcontainer.cpp
+
 )
+
+qt_add_shaders(appImageEffecter "shaders"
+    PREFIX "/"
+    GLSL "310es,430" HLSL 50 MSL 12
+    FILES
+        shaders/quad.vert
+        shaders/quad.frag
+        shaders/test_compute.comp
+        shaders/test_compute2.comp
+    )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
@@ -42,7 +65,7 @@ set_target_properties(appImageEffecter PROPERTIES
 )
 
 target_link_libraries(appImageEffecter
-    PRIVATE Qt6::Quick
+    PRIVATE Qt6::Quick Qt6::GuiPrivate
 )
 
 install(TARGETS appImageEffecter

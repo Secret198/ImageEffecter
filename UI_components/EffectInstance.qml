@@ -7,6 +7,8 @@ Item{
     height: 30
     width: parent.width
 
+    property int idx
+    property string effectName
 
     Rectangle{
         anchors.fill: parent
@@ -21,7 +23,7 @@ Item{
             leftPadding: 5
             color: "#cecece"
 
-            text: "Effect name"
+            text: effectName
         }
 
         Button{
